@@ -92,76 +92,11 @@ ul.b li{margin:0 0 6px}
       </div>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="job">
-        <h3>Senior Data Engineer, Northwind Retail</h3>
-        <p class="meta">Jan 2023 – Present · Pune, India</p>
-        <ul class="b">
-          <li>Led the move from batch ETL to a Kafka and Spark Structured Streaming platform, bringing event-to-dashboard latency from 15 minutes to under a minute.</li>
-          <li>Designed a Delta Lake medallion architecture on Databricks that replaced 120 legacy jobs and cut compute spend by 42%.</li>
-          <li>Introduced data contracts, Great Expectations checks and lineage tracking, reducing data incidents by 60%.</li>
-          <li>Mentored four engineers and ran the on-call rotation for the data platform.</li>
-        </ul>
-        <ul class="chips"><li>Kafka</li><li>Spark</li><li>Databricks</li><li>Delta Lake</li><li>Airflow</li><li>AWS</li></ul>
-      </div>
-      <div class="job">
-        <h3>Data Engineer, Helio Payments</h3>
-        <p class="meta">Jun 2020 – Dec 2022 · Bengaluru, India</p>
-        <ul class="b">
-          <li>Built CDC pipelines from PostgreSQL to the data lake with Debezium and Kafka Connect, covering 200 million rows a day.</li>
-          <li>Rewrote slow Spark jobs using partitioning, broadcast joins and file compaction, making the nightly run 5x faster.</li>
-          <li>Automated infrastructure with Terraform and added CI checks for dbt models.</li>
-        </ul>
-        <ul class="chips"><li>PostgreSQL</li><li>Debezium</li><li>dbt</li><li>Terraform</li><li>Redshift</li></ul>
-      </div>
-      <div class="job">
-        <h3>Software Engineer, Brightpath Analytics</h3>
-        <p class="meta">Jul 2018 – May 2020 · Pune, India</p>
-        <ul class="b">
-          <li>Developed Python ingestion services and SQL reporting layers for ten enterprise clients.</li>
-          <li>Moved reporting from hand-run scripts to scheduled Airflow DAGs, saving about 20 analyst hours a week.</li>
-        </ul>
-      </div>
-    </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
-      <article class="proj">
-        <h3>Real-time clickstream platform</h3>
-        <p><b>Problem:</b> Marketing saw campaign results a day late. <b>Result:</b> Dashboards now update within 40 seconds and handle 50,000 events per second at peak.</p>
-        <div class="flow" aria-label="Architecture"><span>Web and app events</span><i>›</i><span>Kafka</span><i>›</i><span>Spark Structured Streaming</span><i>›</i><span>Delta Lake</span><i>›</i><span>Serving layer and BI</span></div>
-        <p>Key decisions: exactly-once writes with idempotent merges, schema registry with compatibility checks, and replay from Kafka for backfills.</p>
-        <ul class="chips"><li>Kafka</li><li>Spark</li><li>Delta Lake</li><li>Schema Registry</li><li>Grafana</li></ul>
-        <p class="small"><a href="https://github.com/your-handle/clickstream-platform">Source code</a> · <a href="#writing">Design write-up</a></p>
-      </article>
-      <article class="proj">
-        <h3>Data quality and observability framework</h3>
-        <p><b>Problem:</b> Bad data reached dashboards before anyone noticed. <b>Result:</b> Automated checks on 300 tables, alerts in Slack, and a 60% drop in incidents.</p>
-        <div class="flow" aria-label="Architecture"><span>dbt tests</span><i>›</i><span>Great Expectations</span><i>›</i><span>Airflow</span><i>›</i><span>Metrics store</span><i>›</i><span>Slack alerts</span></div>
-        <ul class="chips"><li>Python</li><li>dbt</li><li>Great Expectations</li><li>Airflow</li></ul>
-        <p class="small"><a href="https://github.com/your-handle/dq-framework">Source code</a></p>
-      </article>
-      <article class="proj">
-        <h3>Open-source: spark-partition-doctor</h3>
-        <p>A small CLI that scans Parquet datasets for small files and skew and suggests a compaction plan. 400 GitHub stars and used by three teams at my company.</p>
-        <ul class="chips"><li>Python</li><li>PySpark</li><li>Parquet</li></ul>
-        <p class="small"><a href="https://github.com/your-handle/spark-partition-doctor">Source code</a></p>
-      </article>
-    </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
-      <dl class="skills">
-        <dt>Languages</dt><dd>Python, SQL (advanced), Scala, Bash</dd>
-        <dt>Processing</dt><dd>Apache Spark, Structured Streaming, Kafka, Flink (working knowledge), dbt</dd>
-        <dt>Storage and warehouses</dt><dd>Delta Lake, Iceberg, S3, Redshift, Snowflake, PostgreSQL</dd>
-        <dt>Cloud and platforms</dt><dd>AWS (Glue, EMR, MSK, Kinesis, Lambda), Databricks, Terraform, Docker, Kubernetes</dd>
-        <dt>Orchestration and quality</dt><dd>Airflow, Dagster, Great Expectations, OpenLineage, CI/CD with GitHub Actions</dd>
-        <dt>Architecture</dt><dd>Lakehouse and medallion design, data modeling, CDC, data contracts, cost optimization</dd>
-        <dt>Working style</dt><dd>Design docs, code review, mentoring, incident leadership, stakeholder communication</dd>
-      </dl>
-    </section>
+    <div data-section="experience.html"></div>
+    <div data-section="projects.html"></div>
+    <div data-section="skills.html"></div>
 
     <section id="credentials">
       <h2>Education and certifications</h2>
@@ -189,5 +124,23 @@ ul.b li{margin:0 0 6px}
     </section>
   </main>
 </div>
+
+<script>
+(async () => {
+  for (const slot of document.querySelectorAll('[data-section]')) {
+    try {
+      const response = await fetch(slot.dataset.section);
+      if (!response.ok) throw new Error(`Could not load ${slot.dataset.section}`);
+      slot.innerHTML = await response.text();
+    } catch (error) {
+      slot.innerHTML = `<p>Unable to load <strong>${slot.dataset.section}</strong>.</p>`;
+      console.error(error);
+    }
+  }
+  if (location.hash) {
+    requestAnimationFrame(() => document.querySelector(location.hash)?.scrollIntoView());
+  }
+})();
+</script>
 </body>
 </html>
