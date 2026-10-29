@@ -19,7 +19,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 system-ui,-a
 a{color:var(--accent)}
 a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .sample{background:var(--accent);color:var(--bg);text-align:center;padding:6px 12px;font-size:.9rem}
-.wrap{max-width:1280px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:260px 1fr;gap:56px}
+.wrap{max-width:1360px;margin:0 auto;padding:40px 24px 80px;display:grid;grid-template-columns:260px 1fr;gap:56px}
 aside{position:sticky;top:24px;align-self:start}
 h1{font:600 2.3rem/1.1 Georgia,"Iowan Old Style",serif;letter-spacing:-.02em;margin:0 0 8px}
 .headline{color:var(--muted);margin:0 0 20px}
@@ -28,7 +28,7 @@ aside li{margin:6px 0}
 nav a{display:block;padding:4px 0;color:var(--ink);text-decoration:none}
 nav a:hover{color:var(--accent)}
 .status{border-left:3px solid var(--accent);padding:2px 0 2px 12px;color:var(--muted);font-size:.92rem;margin-top:24px}
-section{margin:0 0 56px}
+section{margin:0 0 56px;scroll-margin-top:24px}
 h2{font:600 1.5rem/1.2 Georgia,"Iowan Old Style",serif;margin:0 0 20px;padding-bottom:10px;border-bottom:1px solid var(--line)}
 p{margin:0 0 12px;max-width:68ch}
 .impact{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:24px 0 0}
@@ -43,13 +43,14 @@ p{margin:0 0 12px;max-width:68ch}
 .job.violet{--job-color:#8b5cf6}
 .job.amber{--job-color:#f59e0b}
 .timeline-dot{position:absolute;left:-34px;top:20px;width:12px;height:12px;border-radius:50%;background:var(--job-color);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--job-color)}
-.job-header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.job-header{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:20px}
 .job h3,.proj h3{margin:0;font-size:1.1rem;color:var(--job-color)}
 .org{margin:2px 0;color:var(--ink);font-weight:600}
 .meta{flex-shrink:0;max-width:none;border-radius:999px;background:var(--chip);color:var(--muted);font-size:.85rem;margin:0;padding:4px 10px}
 ul.b{margin:0;padding-left:20px;max-width:68ch}
 ul.b li{margin:0 0 6px}
 .proj{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px 22px;margin:0 0 18px}
+.proj p,.proj ul{max-width:none;text-wrap:pretty}
 .project-details{margin:12px 0 18px}
 .project-details div{display:grid;grid-template-columns:90px 1fr;gap:12px;margin:0 0 4px}
 .project-details dt{font-weight:600;color:var(--muted)}
