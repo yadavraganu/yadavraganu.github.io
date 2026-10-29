@@ -1,24 +1,17 @@
 <section id="projects">
   <h2>Projects</h2>
   <article class="proj">
-    <h3>Real-time clickstream platform</h3>
-    <p><b>Problem:</b> Marketing saw campaign results a day late. <b>Result:</b> Dashboards now update within 40 seconds and handle 50,000 events per second at peak.</p>
-    <div class="flow" aria-label="Architecture"><span>Web and app events</span><i>›</i><span>Kafka</span><i>›</i><span>Spark Structured Streaming</span><i>›</i><span>Delta Lake</span><i>›</i><span>Serving layer and BI</span></div>
-    <p>Key decisions: exactly-once writes with idempotent merges, schema registry with compatibility checks, and replay from Kafka for backfills.</p>
-    <ul class="chips"><li>Kafka</li><li>Spark</li><li>Delta Lake</li><li>Schema Registry</li><li>Grafana</li></ul>
-    <p class="small"><a href="https://github.com/your-handle/clickstream-platform">Source code</a> · <a href="#writing">Design write-up</a></p>
-  </article>
-  <article class="proj">
-    <h3>Data quality and observability framework</h3>
-    <p><b>Problem:</b> Bad data reached dashboards before anyone noticed. <b>Result:</b> Automated checks on 300 tables, alerts in Slack, and a 60% drop in incidents.</p>
-    <div class="flow" aria-label="Architecture"><span>dbt tests</span><i>›</i><span>Great Expectations</span><i>›</i><span>Airflow</span><i>›</i><span>Metrics store</span><i>›</i><span>Slack alerts</span></div>
-    <ul class="chips"><li>Python</li><li>dbt</li><li>Great Expectations</li><li>Airflow</li></ul>
-    <p class="small"><a href="https://github.com/your-handle/dq-framework">Source code</a></p>
-  </article>
-  <article class="proj">
-    <h3>Open-source: spark-partition-doctor</h3>
-    <p>A small CLI that scans Parquet datasets for small files and skew and suggests a compaction plan. 400 GitHub stars and used by three teams at my company.</p>
-    <ul class="chips"><li>Python</li><li>PySpark</li><li>Parquet</li></ul>
-    <p class="small"><a href="https://github.com/your-handle/spark-partition-doctor">Source code</a></p>
+    <h3>Landing Pad – Customer Name Screening</h3>
+    <p><b>Client:</b> Major European Bank &nbsp;·&nbsp; <b>Role:</b> ETL Developer &nbsp;·&nbsp; <b>Team Size:</b> 8 &nbsp;·&nbsp; <b>Duration:</b> Feb 2015 – Jul 2016</p>
+    <p>Designed, built, and maintained a global customer name-screening platform for a major European bank. The system screened the bank’s worldwide customer base against sanctions and watchlists to identify potential involvement in illegal activity. I worked across the complete ETL lifecycle, collecting regional branch data, transforming it, and loading it into Oracle in a structured, screening-ready format.</p>
+    <p><b>Key Contributions:</b></p>
+    <ul>
+      <li>Analyzed mapping specifications and data requirement documents and recommended design improvements.</li>
+      <li>Developed parallel ETL and sequence jobs using DataStage stages including CDC, Transformer, Join, Lookup, Oracle Connector, and partitioning strategies.</li>
+      <li>Processed incremental delta loads and tuned jobs for throughput, performance, and resource efficiency.</li>
+      <li>Ran and monitored jobs through DataStage Director and Unix, investigated failures using job logs, and validated data using SQL.</li>
+      <li>Supported unit and integration testing, production deployments, database components, Unix scripts, and Control-M scheduling.</li>
+    </ul>
+    <ul class="chips"><li>IBM DataStage 11.3</li><li>Oracle</li><li>Unix</li><li>Windows 7</li><li>Control-M</li><li>Change Data Capture</li></ul>
   </article>
 </section>
