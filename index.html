@@ -7,13 +7,11 @@
 <meta name="description" content="Senior Data Engineer">
 <style>
 :root{
-  --bg:#f4f7fb; --panel:#ffffff; --panel-soft:#f8fafc; --ink:#172033; --muted:#65738a; --line:#dde4ef; --accent:#2563eb; --accent-strong:#1d4ed8; --chip:#edf2f7; --flow:#e8f0fe;
+  --bg:#f3f5f8; --panel:#ffffff; --panel-soft:#fafbfc; --ink:#182033; --muted:#596579; --line:#d9dee8; --accent:#2457a6; --accent-strong:#173d73; --chip:#edf1f5; --flow:#edf3fb;
   --shadow:0 12px 32px rgba(30,41,59,.07); --radius:14px;
   color-scheme:light;
 }
-@media (prefers-color-scheme:dark){
-  :root{ --bg:#0b1120; --panel:#111827; --panel-soft:#161f30; --ink:#edf2f7; --muted:#9aa9bd; --line:#29364b; --accent:#60a5fa; --accent-strong:#93c5fd; --chip:#1d2939; --flow:#172c4f; --shadow:0 14px 36px rgba(0,0,0,.22); color-scheme:dark; }
-}
+@media (prefers-color-scheme:dark){ color-scheme:light; }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:24px}
 body{margin:0;background:linear-gradient(135deg,var(--bg),var(--panel-soft));color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -55,42 +53,32 @@ p{margin:0 0 12px;max-width:68ch}
 .meta{flex-shrink:0;max-width:none;border-radius:999px;background:var(--chip);color:var(--muted);font-size:.85rem;margin:0;padding:4px 10px}
 ul.b{margin:0;padding-left:20px;max-width:68ch}
 ul.b li{margin:0 0 6px}
-.proj{--project-accent:#2563eb;--project-tint:#eff6ff;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--panel) 78%,var(--project-tint));border:1px solid var(--line);border-top:4px solid var(--project-accent);border-radius:var(--radius);padding:24px 26px;margin:0 0 22px;box-shadow:var(--shadow)}
-.proj:before{content:"";position:absolute;top:0;right:0;width:110px;height:110px;border-radius:0 0 0 100%;background:var(--project-tint);opacity:.9;pointer-events:none}
-.proj.blue{--project-accent:#2563eb;--project-tint:#eff6ff}
-.proj.teal{--project-accent:#0d9488;--project-tint:#ecfdf5}
-.proj.violet{--project-accent:#7c3aed;--project-tint:#f5f3ff}
-.proj h3{position:relative;color:var(--project-accent)}
+.proj{--project-accent:#2457a6;position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--project-accent);border-radius:var(--radius);padding:26px 28px;margin:0 0 22px;box-shadow:var(--shadow)}
+.proj.blue{--project-accent:#2457a6}
+.proj.teal{--project-accent:#39766f}
+.proj.violet{--project-accent:#52647c}
+.proj-kicker{color:var(--project-accent)!important;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
+.proj h3{position:relative;color:var(--ink);font-size:1.28rem}
 .proj p,.proj ul{max-width:none;text-wrap:pretty}
-.proj>ul:not(.chips){margin-top:10px;padding:16px 20px 16px 38px;border-left:3px solid var(--project-accent);border-radius:0 10px 10px 0;background:var(--project-tint)}
+.proj>ul:not(.chips){margin-top:10px;padding:16px 20px 16px 38px;border-left:3px solid var(--line-strong,var(--line));border-radius:0 10px 10px 0;background:#f7f8fa}
 .proj>ul:not(.chips) li{margin-bottom:7px;padding-left:3px}
 .proj>ul:not(.chips) li:last-child{margin-bottom:0}
 #about p,#about ul.b{max-width:none;text-wrap:pretty}
-.project-details{position:relative;margin:16px 0 20px;padding:14px 16px;border-radius:10px;background:color-mix(in srgb,var(--project-tint) 58%,var(--panel))}
-.project-details div{display:grid;grid-template-columns:90px 1fr;gap:12px;margin:0 0 4px}
+.project-details{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:16px 0 20px;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--line);overflow:hidden}
+.project-details div{display:block;min-height:68px;background:#f8fafc;padding:10px 12px;margin:0}
+.project-details div:last-child{grid-column:1/-1}
 .project-details dt{font-weight:600;color:var(--muted)}
-.project-details dd{margin:0}
+.project-details dd{margin:2px 0 0;color:var(--ink)}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
 .flow span{background:var(--flow);border-radius:6px;padding:3px 10px;font-size:.86rem}
 .flow i{color:var(--muted);font-style:normal}
 .chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:8px 0 0;padding:0}
-.chips li{background:var(--chip);border-radius:999px;padding:2px 11px;font-size:.85rem}
-.chips li.tech{background:#dbeafe;color:#1e3a8a}
-.chips li.platform{background:#dcfce7;color:#166534}
-.chips li.tool{background:#ffedd5;color:#9a3412}
-.chips li.database{background:#ede9fe;color:#5b21b6}
-.chips li.cloud{background:#cffafe;color:#155e75}
-@media (prefers-color-scheme:dark){
-  .chips li.tech{background:#1e3a5f;color:#bfdbfe}
-  .chips li.platform{background:#163d2a;color:#bbf7d0}
-  .chips li.tool{background:#5a2d18;color:#fed7aa}
-  .chips li.database{background:#312e81;color:#ddd6fe}
-  .chips li.cloud{background:#164e63;color:#a5f3fc}
-  .proj{background:linear-gradient(135deg,var(--panel) 78%,var(--project-tint))}
-  .proj.blue{--project-tint:#17253d}
-  .proj.teal{--project-tint:#12302d}
-  .proj.violet{--project-tint:#29213e}
-}
+.chips li{border:1px solid transparent;border-radius:999px;padding:3px 11px;font-size:.82rem;font-weight:650}
+.chips li.tech{background:#173d73;color:#ffffff;border-color:#173d73}
+.chips li.platform{background:#285d57;color:#ffffff;border-color:#285d57}
+.chips li.tool{background:#665b43;color:#ffffff;border-color:#665b43}
+.chips li.database{background:#493e68;color:#ffffff;border-color:#493e68}
+.chips li.cloud{background:#31536d;color:#ffffff;border-color:#31536d}
 .skills{display:grid;grid-template-columns:170px 1fr;gap:0;margin:0;padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow)}
 .skills dt,.skills dd{padding:10px 0;border-bottom:1px solid var(--line)}
 .skills dt:nth-last-child(2),.skills dd:last-child{border-bottom:0}
@@ -107,6 +95,13 @@ ul.b li{margin:0 0 6px}
   .skills,.two{grid-template-columns:1fr}
   .job-header{flex-direction:column;gap:10px}
   .meta{flex-shrink:1}
+  .project-details{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .project-details div:last-child{grid-column:1/-1}
+}
+@media (max-width:520px){
+  .project-details{grid-template-columns:1fr}
+  .project-details div:last-child{grid-column:auto}
+  .proj{padding:22px 20px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
