@@ -55,10 +55,18 @@ p{margin:0 0 12px;max-width:68ch}
 .meta{flex-shrink:0;max-width:none;border-radius:999px;background:var(--chip);color:var(--muted);font-size:.85rem;margin:0;padding:4px 10px}
 ul.b{margin:0;padding-left:20px;max-width:68ch}
 ul.b li{margin:0 0 6px}
-.proj{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:var(--radius);padding:24px 26px;margin:0 0 22px;box-shadow:var(--shadow)}
+.proj{--project-accent:#2563eb;--project-tint:#eff6ff;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--panel) 78%,var(--project-tint));border:1px solid var(--line);border-top:4px solid var(--project-accent);border-radius:var(--radius);padding:24px 26px;margin:0 0 22px;box-shadow:var(--shadow)}
+.proj:before{content:"";position:absolute;top:0;right:0;width:110px;height:110px;border-radius:0 0 0 100%;background:var(--project-tint);opacity:.9;pointer-events:none}
+.proj.blue{--project-accent:#2563eb;--project-tint:#eff6ff}
+.proj.teal{--project-accent:#0d9488;--project-tint:#ecfdf5}
+.proj.violet{--project-accent:#7c3aed;--project-tint:#f5f3ff}
+.proj h3{position:relative;color:var(--project-accent)}
 .proj p,.proj ul{max-width:none;text-wrap:pretty}
+.proj>ul:not(.chips){margin-top:10px;padding:16px 20px 16px 38px;border-left:3px solid var(--project-accent);border-radius:0 10px 10px 0;background:var(--project-tint)}
+.proj>ul:not(.chips) li{margin-bottom:7px;padding-left:3px}
+.proj>ul:not(.chips) li:last-child{margin-bottom:0}
 #about p,#about ul.b{max-width:none;text-wrap:pretty}
-.project-details{margin:16px 0 20px;padding:14px 16px;border-radius:10px;background:var(--panel-soft)}
+.project-details{position:relative;margin:16px 0 20px;padding:14px 16px;border-radius:10px;background:color-mix(in srgb,var(--project-tint) 58%,var(--panel))}
 .project-details div{display:grid;grid-template-columns:90px 1fr;gap:12px;margin:0 0 4px}
 .project-details dt{font-weight:600;color:var(--muted)}
 .project-details dd{margin:0}
@@ -70,10 +78,18 @@ ul.b li{margin:0 0 6px}
 .chips li.tech{background:#dbeafe;color:#1e3a8a}
 .chips li.platform{background:#dcfce7;color:#166534}
 .chips li.tool{background:#ffedd5;color:#9a3412}
+.chips li.database{background:#ede9fe;color:#5b21b6}
+.chips li.cloud{background:#cffafe;color:#155e75}
 @media (prefers-color-scheme:dark){
   .chips li.tech{background:#1e3a5f;color:#bfdbfe}
   .chips li.platform{background:#163d2a;color:#bbf7d0}
   .chips li.tool{background:#5a2d18;color:#fed7aa}
+  .chips li.database{background:#312e81;color:#ddd6fe}
+  .chips li.cloud{background:#164e63;color:#a5f3fc}
+  .proj{background:linear-gradient(135deg,var(--panel) 78%,var(--project-tint))}
+  .proj.blue{--project-tint:#17253d}
+  .proj.teal{--project-tint:#12302d}
+  .proj.violet{--project-tint:#29213e}
 }
 .skills{display:grid;grid-template-columns:170px 1fr;gap:0;margin:0;padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--panel);box-shadow:var(--shadow)}
 .skills dt,.skills dd{padding:10px 0;border-bottom:1px solid var(--line)}
@@ -99,16 +115,16 @@ ul.b li{margin:0 0 6px}
 <div class="wrap">
   <aside>
     <h1>Anurag Yadav</h1>
-    <p class="headline">Senior Data Engineer · Streaming and lakehouse platforms · Pune, India</p>
+    <p class="headline">Senior Data Engineer · Pune, India</p>
     <ul>
       <li><a href="https://www.linkedin.com/in/yadavraganu/" rel="me noopener">LinkedIn</a></li>
-      <li><a href="https://github.com/your-handle" rel="me noopener">GitHub</a></li>
-      <li><a href="mailto:you@example.com">you@example.com</a></li>
-      <li><a href="resume.pdf">Download résumé (PDF)</a></li>
+      <li><a href="https://github.com/yadavraganu" rel="me noopener">GitHub</a></li>
+      <li><a href="https://www.credly.com/users/yadavraganu/badges/credly">Credly</a></li>
+      <li><a href="https://www.credential.net/profile/raganu/wallet">Accredible</a></li>
     </ul>
     <nav aria-label="Sections">
       <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a>
-      <a href="#skills">Skills</a><a href="#credentials">Education and Certifications</a><a href="#writing">Writing and talks</a>
+      <a href="#skills">Skills</a><a href="#credentials">Education and Certifications</a>
     </nav>
     <p class="status">Currently open to senior and staff data engineering roles. Replies within two days.</p>
   </aside>
@@ -119,15 +135,6 @@ ul.b li{margin:0 0 6px}
     <div data-section="projects.html"></div>
     <div data-section="skills.html"></div>
     <div data-section="credentials.html"></div>
-
-    <section id="writing">
-      <h2>Writing and talks</h2>
-      <ul class="b">
-        <li><a href="https://example.com/post-1">Exactly-once streaming into Delta Lake: what actually works</a>, blog post, 2025</li>
-        <li><a href="https://example.com/post-2">How we cut Spark costs by 42% without slowing jobs down</a>, blog post, 2024</li>
-        <li>Talk: Building data contracts that engineers will follow, Pune Data Meetup, 2025</li>
-      </ul>
-    </section>
   </main>
 </div>
 
