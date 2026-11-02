@@ -29,7 +29,6 @@ aside li a:hover{color:var(--accent)}
 nav{display:flex;flex-direction:column;border-top:1px solid var(--line);padding-top:16px}
 nav a{display:block;padding:7px 10px;margin:1px 0;border-radius:8px;color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:600}
 nav a:hover{color:var(--accent-strong);background:var(--flow)}
-.status{border:1px solid color-mix(in srgb,var(--accent) 28%,var(--line));border-radius:10px;padding:12px 14px;background:var(--flow);color:var(--ink);font-size:.86rem;margin-top:24px}
 section{margin:0 0 56px;scroll-margin-top:24px}
 h2{font:600 1.65rem/1.2 Georgia,"Iowan Old Style",serif;margin:0 0 22px;padding-bottom:12px;border-bottom:1px solid var(--line);position:relative}
 h2:after{content:"";position:absolute;left:0;bottom:-1px;width:64px;height:3px;border-radius:3px;background:var(--accent)}
@@ -53,27 +52,37 @@ p{margin:0 0 12px;max-width:68ch}
 .meta{flex-shrink:0;max-width:none;border-radius:999px;background:var(--chip);color:var(--muted);font-size:.85rem;margin:0;padding:4px 10px}
 ul.b{margin:0;padding-left:20px;max-width:68ch}
 ul.b li{margin:0 0 6px}
-.proj{--project-accent:#2457a6;position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--project-accent);border-radius:var(--radius);padding:26px 28px;margin:0 0 22px;box-shadow:var(--shadow)}
-.proj.blue{--project-accent:#2457a6}
-.proj.teal{--project-accent:#39766f}
-.proj.violet{--project-accent:#52647c}
-.proj-kicker{color:var(--project-accent)!important;font-size:.75rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;margin-bottom:7px}
-.proj h3{position:relative;color:var(--ink);font-size:1.28rem}
+#projects{display:flex;flex-direction:column}
+#projects>.proj{width:100%}
+#projects>.proj:nth-of-type(1){order:4}
+#projects>.proj:nth-of-type(2){order:3}
+#projects>.proj:nth-of-type(3){order:2}
+#projects>.proj:nth-of-type(4){order:1}
+.proj{--project-accent:#2457a6;--project-soft:#edf4fc;position:relative;overflow:hidden;background:linear-gradient(145deg,var(--project-soft) 0,var(--panel) 150px,var(--panel) 100%);border:1px solid color-mix(in srgb,var(--project-accent) 18%,var(--line));border-left:5px solid var(--project-accent);border-radius:var(--radius);padding:28px 30px;margin:0 0 24px;box-shadow:0 8px 28px rgba(30,41,59,.075);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.proj:before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--project-accent),color-mix(in srgb,var(--project-accent) 18%,transparent))}
+.proj:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--project-accent) 42%,var(--line));box-shadow:0 16px 38px rgba(30,41,59,.11)}
+.proj.blue{--project-accent:#2457a6;--project-soft:#edf4fc}
+.proj.teal{--project-accent:#39766f;--project-soft:#edf8f6}
+.proj.violet{--project-accent:#7355a6;--project-soft:#f4f0fb}
+.proj.amber{--project-accent:#a86616;--project-soft:#fcf5e8}
+.proj-kicker{display:inline-block;color:var(--project-accent)!important;font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin-bottom:8px;padding:4px 9px;border-radius:999px;background:color-mix(in srgb,var(--project-accent) 10%,var(--panel))}
+.proj h3{position:relative;color:var(--project-accent);font-size:1.35rem;letter-spacing:-.012em}
 .proj p,.proj ul{max-width:none;text-wrap:pretty}
-.proj>ul:not(.chips){margin-top:10px;padding:16px 20px 16px 38px;border-left:3px solid var(--line-strong,var(--line));border-radius:0 10px 10px 0;background:#f7f8fa}
+.proj>ul:not(.chips){margin-top:12px;padding:16px 20px 16px 38px;border-left:3px solid color-mix(in srgb,var(--project-accent) 42%,var(--line));border-radius:10px;background:linear-gradient(90deg,color-mix(in srgb,var(--project-accent) 5%,#fff),#f8fafc)}
 .proj>ul:not(.chips) li{margin-bottom:7px;padding-left:3px}
+.proj>ul:not(.chips) li::marker{color:var(--project-accent)}
 .proj>ul:not(.chips) li:last-child{margin-bottom:0}
 #about p,#about ul.b{max-width:none;text-wrap:pretty}
-.project-details{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:16px 0 20px;padding:0;border:1px solid var(--line);border-radius:10px;background:var(--line);overflow:hidden}
-.project-details div{display:block;min-height:68px;background:#f8fafc;padding:10px 12px;margin:0}
-.project-details div:last-child{grid-column:1/-1}
-.project-details dt{font-weight:600;color:var(--muted)}
+.project-details{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:18px 0 22px;padding:0;border:1px solid color-mix(in srgb,var(--project-accent) 18%,var(--line));border-radius:12px;background:color-mix(in srgb,var(--project-accent) 12%,var(--line));overflow:hidden}
+.project-details div{display:block;min-height:68px;background:linear-gradient(135deg,var(--project-soft),var(--panel) 92%);padding:11px 13px;margin:0}
+.project-details div:last-child{grid-column:span 2}
+.project-details dt{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--project-accent)}
 .project-details dd{margin:2px 0 0;color:var(--ink)}
 .flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0}
 .flow span{background:var(--flow);border-radius:6px;padding:3px 10px;font-size:.86rem}
 .flow i{color:var(--muted);font-style:normal}
-.chips{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:8px 0 0;padding:0}
-.chips li{border:1px solid transparent;border-radius:999px;padding:3px 11px;font-size:.82rem;font-weight:650}
+.chips{display:flex;flex-wrap:wrap;gap:7px;list-style:none;margin:10px 0 0;padding-top:14px;border-top:1px solid color-mix(in srgb,var(--project-accent) 14%,var(--line))}
+.chips li{border:1px solid transparent;border-radius:999px;padding:4px 12px;font-size:.82rem;font-weight:650;box-shadow:0 2px 5px rgba(30,41,59,.08)}
 .chips li.tech{background:#173d73;color:#ffffff;border-color:#173d73}
 .chips li.platform{background:#285d57;color:#ffffff;border-color:#285d57}
 .chips li.tool{background:#665b43;color:#ffffff;border-color:#665b43}
@@ -121,7 +130,6 @@ ul.b li{margin:0 0 6px}
       <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a>
       <a href="#skills">Skills</a><a href="#credentials">Education and Certifications</a>
     </nav>
-    <p class="status">Currently open to senior and staff data engineering roles. Replies within two days.</p>
   </aside>
 
   <main>
